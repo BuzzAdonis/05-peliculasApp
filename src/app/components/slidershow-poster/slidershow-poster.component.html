@@ -1,0 +1,9 @@
+
+  <ion-slides pager="ios" [options]="slidesOptions">
+
+    <ion-slide *ngFor="let slide of peliculas" class="poster">
+      <ion-card mode="ios"  >
+        <img [src]="slide.poster_path |imagen" />
+      </ion-card>
+    </ion-slide>
+</ion-slides>

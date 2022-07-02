@@ -1,9 +1,9 @@
 
   <ion-slides pager="ios" [options]="slidesOptions">
 
-    <ion-slide *ngFor="let slide of peliculas">
-      <ion-card mode="ios">
-        <img [src]="slide.backdrop_path |imagen" />
+    <ion-slide *ngFor="let pelicula of peliculas">
+      <ion-card mode="ios" (click)="verDetalle(pelicula.id)">
+        <img [src]="pelicula.backdrop_path |imagen" />
       </ion-card>
     </ion-slide>
 </ion-slides>

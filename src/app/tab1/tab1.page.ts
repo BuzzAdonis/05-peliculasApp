@@ -9,12 +9,23 @@ import { MoviesService } from '../services/movies.service';
 })
 export class Tab1Page implements  OnInit {
  peliculasRcientes: Peliculas[]=[];
+ populares:Peliculas[]=[];
   constructor(private moviesService:MoviesService) {}
 
   ngOnInit(): void {
     this.moviesService.getFeature().subscribe(resp =>{
-      console.log('Respuesta',resp)
-      this.peliculasRcientes =resp.results
+      this.peliculasRcientes =resp.results;
+    });
+    this.getPopulares();
+  }
+  cargarMas(){
+    this.getPopulares();
+  }
+  getPopulares(){
+    this.moviesService.getPopulares().subscribe(resp =>{
+      //this.populares.push(...resp.results)
+      const arrayTmp=[...this.populares,...resp.results];
+      this.populares =arrayTmp;
     });
   }
 

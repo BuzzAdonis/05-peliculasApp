@@ -74,7 +74,7 @@ export interface PeliculaDetalle {
     origin_country: string;
   }
   
-  interface Genre {
+  export interface Genre {
     id: number;
     name: string;
   }
@@ -106,4 +106,7 @@ export interface PeliculaDetalle {
     order: number;
     profile_path?: string;
   }
-  
+  export interface Generos {
+    genres: Genre[];
+}
+

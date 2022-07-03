@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Peliculas } from 'src/app/interfaces/interfaces';
+import { PeliculaDetalle } from 'src/app/interfaces/interfaces';
 import { DetalleComponent } from '../detalle/detalle.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { DetalleComponent } from '../detalle/detalle.component';
   styleUrls: ['./slidershow-poster.component.scss'],
 })
 export class SlidershowPosterComponent implements OnInit {
-  @Input() peliculas:Peliculas[]=[];
+  @Input() peliculas:PeliculaDetalle[]=[];
   slidesOptions={
     slidesPerView:1.6,
     freeMode:true

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { PeliculaDetalle, RespuestaCredits, RespuestaMDB } from '../interfaces/interfaces';
+import { Generos, Genre, PeliculaDetalle, RespuestaCredits, RespuestaMDB } from '../interfaces/interfaces';
 const url:string=environment.urlMoviesMDB
 const api_key=environment.apikeyMoviesMDB
 @Injectable({
@@ -9,6 +9,7 @@ const api_key=environment.apikeyMoviesMDB
 })
 export class MoviesService {
   private popularesPage:number=0;
+  private genero:Genre[]=[];
   constructor(private http:HttpClient) { }
 
   getFeature(){
@@ -56,5 +57,26 @@ export class MoviesService {
         
       }
 });
+  }
+
+  buscarPeliculas(query:string){
+    return this.http.get(url+`search/movie?language=es&include_image_language=es`,{
+      params:{
+        api_key,
+        query
+      }
+    });
+  }
+  cargarGenero(){
+  return  new Promise<Genre[]>(resolve=>{
+    return this.http.get<Generos>(url+`genre/movie/list?language=es&include_image_language=es`,{
+      params:{
+        api_key,
+      }
+    }).subscribe(resp=>{
+      this.genero=resp.genres;
+      resolve(this.genero);
+    });
+  });
   }
 }

@@ -1,6 +1,6 @@
 <ion-content>
   <ion-label class="titulo">
-    <h1>{{pelicula.title}}</h1>
+    <h1 class="ion-text-center">{{pelicula.title}}</h1>
   </ion-label>
   <img [src]="pelicula.backdrop_path | imagen" 
         *ngIf="pelicula.backdrop_path"/>
@@ -74,7 +74,7 @@
     <ion-buttons slot="end">
       <ion-button (click)="favorito()">
         <ion-label>Favorito</ion-label>
-        <ion-icon slot="end" name="star-outline"></ion-icon>
+        <ion-icon slot="end" [name]="estrella"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
